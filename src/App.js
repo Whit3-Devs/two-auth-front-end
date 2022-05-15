@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useMemo } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import QRcode from './pages/QRcode';
+import AuthToken from './pages/AuthToken';
+import Welcome from './pages/Welcome';
+import { customTheme } from './assets/mui-theme-config/theme-mui';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const theme = useMemo(() => createTheme(customTheme), []);
+	return (
+		<>
+			<ThemeProvider theme={theme}>
+				<Routes>
+					<Route path='/' element={<Navigate to='/login' replace={true} />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/register' element={<Register />} />
+					<Route path='/qrcode' element={<QRcode />} />
+					<Route path='/authtoken' element={<AuthToken />} />
+					<Route path='/welcome' element={<Welcome />} />
+				</Routes>
+			</ThemeProvider>
+		</>
+	);
+};
 
 export default App;
