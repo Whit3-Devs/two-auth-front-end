@@ -1,22 +1,23 @@
-import {
-	Container,
-	Box,
-	Button,
-	Checkbox,
-	Typography,
-	TextField,
-	Grid,
-} from '@mui/material';
+import { Box, Button, Typography, TextField, Grid } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import { Link } from 'react-router-dom';
 
 const Register = () => {
 	return (
-		<Container>
+		<Box
+			sx={{
+				width: '60%',
+				height: '75%',
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
 			<Box
 				component='form'
 				sx={{
-					'& .MuiTextField-root': { m: 1, width: '25ch' },
+					'& .MuiTextField-root': { width: '100%', gap: '15px' },
 				}}
 				noValidate
 				autoComplete='off'
@@ -28,15 +29,15 @@ const Register = () => {
 								required
 								id='outlined-required'
 								label='Name'
-								//   defaultValue="Hello World"
+								fullWidth
 							/>
 						</Grid>
 						<Grid item xs={6}>
 							<TextField
 								required
 								id='outlined-required'
-								label='Last name'
-								// defaultValue='Hello World'
+								label='Last Name'
+								fullWidth
 							/>
 						</Grid>
 						<Grid item xs={6}>
@@ -44,7 +45,7 @@ const Register = () => {
 								required
 								id='outlined-required'
 								label='Email'
-								// defaultValue=''
+								fullWidth
 							/>
 						</Grid>
 						<Grid item xs={6}>
@@ -54,44 +55,87 @@ const Register = () => {
 								label='Password'
 								type='password'
 								autoComplete='current-password'
+								fullWidth
 							/>
+						</Grid>
+						<Grid item xs={6}></Grid>
+						<Grid item xs={6}>
+							<Box
+								sx={{
+									display: 'flex',
+									flexWrap: 'wrap',
+									gap: '5px',
+									'& p': {
+										display: 'flex',
+										justifyContent: 'space-around',
+										alignItems: 'center',
+										fontSize: '13px',
+										gap: '5px',
+									},
+								}}
+							>
+								<Typography>
+									<CheckIcon />
+									Lowercase
+								</Typography>
+								<Typography>
+									<CheckIcon />
+									uppercase
+								</Typography>
+								<Typography>
+									<CheckIcon />
+									Special characters
+								</Typography>
+								<Typography>
+									<CheckIcon />
+									number
+								</Typography>
+								<Typography>
+									<CheckIcon />
+									Min 8 characters
+								</Typography>
+							</Box>
 						</Grid>
 					</Grid>
 				</Box>
 
-				<Checkbox
-					aria-label={'Checkbox demo'}
-					defaultChecked
-					sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
-				/>
-				<Typography>
-					<CheckIcon />
-					Lowercase
-				</Typography>
-				<Typography>
-					<CheckIcon />
-					uppercase
-				</Typography>
-				<Typography>
-					<CheckIcon />
-					Number
-				</Typography>
-				<Typography>
-					<CheckIcon />
-					Min 8 characters
-				</Typography>
-				<Typography>
-					<CheckIcon />
-					Special characters
-				</Typography>
-				<Button variant='contained'>Sign Up</Button>
+				<Button
+					variant='contained'
+					fullWidth
+					sx={{
+						height: '45px',
+						margin: '15px 0',
+						fontWeight: '700',
+						fontSize: '20px',
+						textTransform: 'capitalize',
+					}}
+				>
+					Sign Up
+				</Button>
 			</Box>
-			<Box>
-				<Typography>
+			<Box
+				sx={{
+					width: '100%',
+					display: 'flex',
+					justifyContent: 'flex-start',
+					alignItems: 'center',
+				}}
+			>
+				<Typography
+					sx={{
+						'& a': {
+							textDecoration: 'none',
+							color: '#389820',
+							fontWeight: '700',
+						},
+						fontWeight: '700',
+						fontSize: '24px',
+					}}
+				>
 					Have an account? <Link to='/login'>Login</Link>
 				</Typography>
 			</Box>
-		</Container>
+		</Box>
 	);
 };
 
